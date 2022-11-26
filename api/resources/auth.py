@@ -29,7 +29,7 @@ class CreateUserResource(Resource):
             }
 
         except KeyError:
-            return {"msg": "Some or no fields not provided."}, HTTPStatus.BAD_REQUEST
+            return {"msg": "All or none of the fields are not provided."}, HTTPStatus.BAD_REQUEST
         user = createUser(dbData)
         user.pop("password")
         user.pop("location")

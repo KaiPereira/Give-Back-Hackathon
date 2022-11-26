@@ -4,7 +4,7 @@ from extensions import jwt
 import firebase_admin
 from config import Config
 from api.resources.auth import CreateUserResource, LoginResource, LogoutResource, RefreshResource, jwt_blacklist
-
+from api.resources.listing import CreateListingResource
 
 def register_extensions(app):
     jwt.init_app(app)
@@ -30,6 +30,8 @@ def register_resources(app):
     api.add_resource(LogoutResource, "/api/users/logout")
     api.add_resource(CreateUserResource, "/api/users/create")
     api.add_resource(RefreshResource, "/api/users/refresh")
+    api.add_resource(CreateListingResource, "/api/listings/create")
+
 
 if __name__ == '__main__':
     app = create_app()

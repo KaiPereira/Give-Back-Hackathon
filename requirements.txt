@@ -3,5 +3,6 @@ flask
 flask_restful
 flask-cors
 flask-jwt-extended == 4.4.4
-passlib
-httpie
+spacy
+skillNER
+IPython

@@ -37,3 +37,6 @@ next-env.d.ts
 
 # firebase pkey
 firebase_key.json
+
+# jetbrains
+.idea/
