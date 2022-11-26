@@ -3,8 +3,10 @@ from flask_restful import Api
 from extensions import jwt
 import firebase_admin
 from config import Config
-from api.resources.auth import CreateUserResource, LoginResource, LogoutResource, RefreshResource, jwt_blacklist
-from api.resources.listing import CreateListingResource
+from api.resources.auth import UserResource, LoginResource, LogoutResource, RefreshResource, jwt_blacklist
+from api.resources.listing import ListingResource, MyListingResource, RequestListingResource
+from api.resources.notifications import NotificationResource, ReadNotificationResource
+from api.resources.dummy import TestEndpoint, ProtectedTestEndpoint
 
 def register_extensions(app):
     jwt.init_app(app)
@@ -28,10 +30,16 @@ def register_resources(app):
 
     api.add_resource(LoginResource, "/api/users/login")
     api.add_resource(LogoutResource, "/api/users/logout")
-    api.add_resource(CreateUserResource, "/api/users/create")
+    api.add_resource(UserResource, "/api/users")
     api.add_resource(RefreshResource, "/api/users/refresh")
-    api.add_resource(CreateListingResource, "/api/listings/create")
+    api.add_resource(ListingResource, "/api/listings")
+    api.add_resource(MyListingResource, "/api/listings/me")
+    api.add_resource(NotificationResource, "/api/notifs/me")
+    api.add_resource(ReadNotificationResource, "/api/notifs/read/<notifId>")
+    api.add_resource(RequestListingResource, "/api/listings/<listingId>/request")
 
+    api.add_resource(TestEndpoint, "/api/testEndpoint")
+    api.add_resource(ProtectedTestEndpoint, "/api/protectedTestEndpoint")
 
 if __name__ == '__main__':
     app = create_app()

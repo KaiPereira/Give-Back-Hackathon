@@ -10,7 +10,11 @@ from flask_jwt_extended import (get_jwt_identity,
                                 create_refresh_token)
 jwt_blacklist = set()
 
-class CreateUserResource(Resource):
+class UserResource(Resource):
+    def get(self, id):
+        pass
+
+
     def post(self):
         try:
             # it's a hackathon bro
@@ -21,6 +25,7 @@ class CreateUserResource(Resource):
                 "isStudent": data["isStudent"],
                 "isBusiness": not data["isStudent"],
                 "skills": data["skills"],
+                "notifs": [],
                 "location": {
                     "town": data["town"],
                     "province": data["province"],
@@ -33,6 +38,8 @@ class CreateUserResource(Resource):
         user = createUser(dbData)
         user.pop("password")
         user.pop("location")
+        user.pop("notifs")
+
         return user, HTTPStatus.CREATED
 
 class LoginResource(Resource):
