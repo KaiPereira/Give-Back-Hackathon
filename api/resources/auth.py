@@ -1,8 +1,8 @@
 from flask_restful import Resource
 from http import HTTPStatus
 from flask import request
-from api.utils.dbUtils import createUser, getUserFromUsername
-from api.utils.authUtils import hashPassword, verifyPassword
+from api.utils.dbUtils import getUserFromUsername
+from api.utils.authUtils import verifyPassword
 from flask_jwt_extended import (get_jwt_identity,
                                 jwt_required,
                                 get_jwt,
@@ -10,37 +10,6 @@ from flask_jwt_extended import (get_jwt_identity,
                                 create_refresh_token)
 jwt_blacklist = set()
 
-class UserResource(Resource):
-    def get(self, id):
-        pass
-
-
-    def post(self):
-        try:
-            # it's a hackathon bro
-            data = request.get_json()
-            dbData = {
-                "username": data["username"],
-                "password": hashPassword(data["password"]),
-                "isStudent": data["isStudent"],
-                "isBusiness": not data["isStudent"],
-                "skills": data["skills"],
-                "notifs": [],
-                "location": {
-                    "town": data["town"],
-                    "province": data["province"],
-                    "country": data["country"]
-                }
-            }
-
-        except KeyError:
-            return {"msg": "All or none of the fields are not provided."}, HTTPStatus.BAD_REQUEST
-        user = createUser(dbData)
-        user.pop("password")
-        user.pop("location")
-        user.pop("notifs")
-
-        return user, HTTPStatus.CREATED
 
 class LoginResource(Resource):
 

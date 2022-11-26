@@ -3,7 +3,8 @@ from flask_restful import Api
 from extensions import jwt
 import firebase_admin
 from config import Config
-from api.resources.auth import UserResource, LoginResource, LogoutResource, RefreshResource, jwt_blacklist
+from api.resources.auth import LoginResource, LogoutResource, RefreshResource, jwt_blacklist
+from api.resources.user import UserCreationResource, UserViewResource
 from api.resources.listing import ListingResource, MyListingResource, RequestListingResource
 from api.resources.notifications import NotificationResource, ReadNotificationResource
 from api.resources.dummy import TestEndpoint, ProtectedTestEndpoint
@@ -30,7 +31,8 @@ def register_resources(app):
 
     api.add_resource(LoginResource, "/api/users/login")
     api.add_resource(LogoutResource, "/api/users/logout")
-    api.add_resource(UserResource, "/api/users")
+    api.add_resource(UserCreationResource, "/api/users")
+    api.add_resource(UserViewResource, "/api/users/<id>")
     api.add_resource(RefreshResource, "/api/users/refresh")
     api.add_resource(ListingResource, "/api/listings")
     api.add_resource(MyListingResource, "/api/listings/me")
