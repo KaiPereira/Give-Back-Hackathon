@@ -67,3 +67,8 @@ def removeNotifFromUser(userId, notifId):
     })
 
     return True
+
+def updateDB(userId, dbData):
+    doc = db.collection("users").document(userId)
+    doc.update(dbData)
+    return True
