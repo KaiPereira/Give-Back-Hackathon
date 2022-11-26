@@ -82,6 +82,7 @@ body * {
     /* identical to box height */
     /* medium-gray */
     color: #6F7774;
+    cursor: pointer;
 }
 
 .listings {
@@ -162,19 +163,22 @@ body * {
     font-weight: 600;
 }
 
-.listing::after {
+.listing:hover::after {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     border-radius: 25px;
-    background: transparent;
     cursor: pointer;
-}
-
-.listing::after:hover {
-    display: block;
     background: #57F1BA;
-    content: 'Check it out';
+    content: 'Check it out →';
+    display: grid;
+    place-items: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 33px;
+    color: #FFFFFF;
 }
