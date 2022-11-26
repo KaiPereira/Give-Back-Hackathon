@@ -1,4 +1,0 @@
-
-Listing Services:
-GET /api/listings/<listingId> > View listing.
-GET /api/listings/discover > Requires JWT Access Token (only students). View all recommended listings.
