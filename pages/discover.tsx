@@ -1,7 +1,9 @@
+import NavBar from "../components/navbar"
+
 export default function Discover() {
   return (
     <>
-        <div className='top-navbar'></div>
+        <NavBar />
         <div className="discover-page">
             <div className="discover-sections-p">
                 <div className='discover-sections'>
@@ -39,8 +41,8 @@ export default function Discover() {
                         <div className="listing-tag">E-Commerce</div>
                     </div>
                     <div className="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio est, porttitor sit amet urna sit amet, malesuada dictum felis. Sed arcu leo, tristique sit amet interdum sit amet, auctor vel mi.</div>
-                    <div className="listing-location"><span></span></div>
-                    <div className="listing-author"><span></span></div>
+                    <div className="listing-location"><span>Location:</span>Address ipsum</div>
+                    <div className="listing-author"><span>Author:</span>Tesla Inc.</div>
                 </div>
                 <div className="listing">
                     <div className="listing-title">E-Commerce Website</div>
@@ -52,8 +54,8 @@ export default function Discover() {
                         <div className="listing-tag">E-Commerce</div>
                     </div>
                     <div className="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio est, porttitor sit amet urna sit amet, malesuada dictum felis. Sed arcu leo, tristique sit amet interdum sit amet, auctor vel mi.</div>
-                    <div className="listing-location"><span></span></div>
-                    <div className="listing-author"><span></span></div>
+                    <div className="listing-location"><span>Location:</span>Address ipsum</div>
+                    <div className="listing-author"><span>Author:</span>Tesla Inc.</div>
                 </div>
                 <div className="listing">
                     <div className="listing-title">E-Commerce Website</div>
@@ -65,8 +67,8 @@ export default function Discover() {
                         <div className="listing-tag">E-Commerce</div>
                     </div>
                     <div className="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio est, porttitor sit amet urna sit amet, malesuada dictum felis. Sed arcu leo, tristique sit amet interdum sit amet, auctor vel mi.</div>
-                    <div className="listing-location"><span></span></div>
-                    <div className="listing-author"><span></span></div>
+                    <div className="listing-location"><span>Location:</span>Address ipsum</div>
+                    <div className="listing-author"><span>Author:</span>Tesla Inc.</div>
                 </div>
                 <div className="listing">
                     <div className="listing-title">E-Commerce Website</div>
@@ -78,8 +80,8 @@ export default function Discover() {
                         <div className="listing-tag">E-Commerce</div>
                     </div>
                     <div className="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio est, porttitor sit amet urna sit amet, malesuada dictum felis. Sed arcu leo, tristique sit amet interdum sit amet, auctor vel mi.</div>
-                    <div className="listing-location"><span></span></div>
-                    <div className="listing-author"><span></span></div>
+                    <div className="listing-location"><span>Location:</span>Address ipsum</div>
+                    <div className="listing-author"><span>Author:</span>Tesla Inc.</div>
                 </div>
                 <div className="listing">
                     <div className="listing-title">E-Commerce Website</div>
@@ -91,8 +93,8 @@ export default function Discover() {
                         <div className="listing-tag">E-Commerce</div>
                     </div>
                     <div className="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio est, porttitor sit amet urna sit amet, malesuada dictum felis. Sed arcu leo, tristique sit amet interdum sit amet, auctor vel mi.</div>
-                    <div className="listing-location"><span></span></div>
-                    <div className="listing-author"><span></span></div>
+                    <div className="listing-location"><span>Location:</span>Address ipsum</div>
+                    <div className="listing-author"><span>Author:</span>Tesla Inc.</div>
                 </div>
                 <div className="listing">
                     <div className="listing-title">E-Commerce Website</div>
@@ -104,8 +106,34 @@ export default function Discover() {
                         <div className="listing-tag">E-Commerce</div>
                     </div>
                     <div className="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio est, porttitor sit amet urna sit amet, malesuada dictum felis. Sed arcu leo, tristique sit amet interdum sit amet, auctor vel mi.</div>
-                    <div className="listing-location"><span></span></div>
-                    <div className="listing-author"><span></span></div>
+                    <div className="listing-location"><span>Location:</span>Address ipsum</div>
+                    <div className="listing-author"><span>Author:</span>Tesla Inc.</div>
+                </div>
+                <div className="listing">
+                    <div className="listing-title">E-Commerce Website</div>
+                    <div className="listing-tags">
+                        <div className="listing-tag">Design</div>
+                        <div className="listing-tag">Web</div>
+                        <div className="listing-tag">Development</div>
+                        <div className="listing-tag">Backend</div>
+                        <div className="listing-tag">E-Commerce</div>
+                    </div>
+                    <div className="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio est, porttitor sit amet urna sit amet, malesuada dictum felis. Sed arcu leo, tristique sit amet interdum sit amet, auctor vel mi.</div>
+                    <div className="listing-location"><span>Location:</span>Address ipsum</div>
+                    <div className="listing-author"><span>Author:</span>Tesla Inc.</div>
+                </div>
+                <div className="listing">
+                    <div className="listing-title">E-Commerce Website</div>
+                    <div className="listing-tags">
+                        <div className="listing-tag">Design</div>
+                        <div className="listing-tag">Web</div>
+                        <div className="listing-tag">Development</div>
+                        <div className="listing-tag">Backend</div>
+                        <div className="listing-tag">E-Commerce</div>
+                    </div>
+                    <div className="listing-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio est, porttitor sit amet urna sit amet, malesuada dictum felis. Sed arcu leo, tristique sit amet interdum sit amet, auctor vel mi.</div>
+                    <div className="listing-location"><span>Location:</span>Address ipsum</div>
+                    <div className="listing-author"><span>Author:</span>Tesla Inc.</div>
                 </div>
             </div>
         </div>

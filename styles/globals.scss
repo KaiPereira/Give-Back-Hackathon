@@ -86,17 +86,18 @@ body * {
 
 .listings {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 62px 105px;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .listing {
+    position: relative;
     padding: 20px;
     width: 278px;
     height: 335px;
     /* Light-gray */
     background: #F7F7F7;
     border-radius: 25px;
+    margin-bottom: 62px;
 }
 
 .listing-title {
@@ -118,6 +119,7 @@ body * {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 27px;
+    gap: 5px;
 }
 
 .listing-tag {
@@ -135,3 +137,44 @@ body * {
     color: #FFFFFF;
 }
 
+.listing-description {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    /* medium-gray */
+    color: #6F7774;    
+}
+
+.listing-location, .listing-author {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height */
+    color: #6F7774;
+    margin: 12px 0px;
+}
+
+.listing-location > span, .listing-author > span {
+    font-weight: 600;
+}
+
+.listing::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.listing::after:hover {
+    display: block;
+    background: #57F1BA;
+    content: 'Check it out';
+}
