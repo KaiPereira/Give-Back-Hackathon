@@ -19,11 +19,8 @@ class UserCreationResource(Resource):
                 "skills": data["skills"],
                 "bio": "LocalConnect is so bussin.",
                 "notifs": [],
-                "location": {
-                    "town": data["town"],
-                    "province": data["province"],
-                    "country": data["country"]
-                }
+                "location": data["location"],
+                "socials": data["socials"]
             }
 
         except KeyError:
@@ -42,11 +39,9 @@ class UserCreationResource(Resource):
             dbData = {
                 "skills": data["skills"],
                 "bio": data["bio"],
-                "location": {
-                    "town": data["town"],
-                    "province": data["province"],
-                    "country": data["country"]
-                }
+                "location": data["location"],
+                "socials": data["socials"]
+
             }
         except KeyError:
             return {"msg": "All or some fields are not provided."}, HTTPStatus.BAD_REQUEST
