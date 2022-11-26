@@ -1,0 +1,17 @@
+API endpoints:
+
+For businesses
+/create-account
+/login
+/logout
+/my-listings
+/create-listing
+/get-notifications
+
+For students:
+/create-account
+/update-account-details
+/login
+/logout
+/view-listings (ML rec system goes here)
+/request-listing/<listing-id>
