@@ -47,3 +47,91 @@ table {
 body * {
 	box-sizing: border-box;
 }
+
+.discover-page {
+    padding: 0px 150px;
+}
+
+.top-navbar{
+    display: block;
+    height: 80px;
+    /* light-gray */   
+    border-bottom: 0.5px solid #CFCFCF;
+    margin-bottom: 37px;
+}
+
+.discover-sections-p {
+    height: 39px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 91px;
+}
+
+.discover-sections {
+    display: flex;
+    gap: 34px;
+}
+
+.discover-section {
+    height: 23px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+    /* medium-gray */
+    color: #6F7774;
+}
+
+.listings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 62px 105px;
+}
+
+.listing {
+    padding: 20px;
+    width: 278px;
+    height: 335px;
+    /* Light-gray */
+    background: #F7F7F7;
+    border-radius: 25px;
+}
+
+.listing-title {
+    height: 29px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 28px;
+    /* identical to box height */
+    /* Black */
+    color: #1D201F;
+    margin-bottom: 16px;
+}
+
+.listing-tags {
+    width: 240px;
+    height: 55px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 27px;
+}
+
+.listing-tag {
+    padding: 3px 10px 0px;
+    height: 24px;
+    /* main */
+    background: #57F1BA;
+    border-radius: 1000px;  
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
