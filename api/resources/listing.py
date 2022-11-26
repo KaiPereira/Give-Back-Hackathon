@@ -2,8 +2,8 @@ from flask_restful import Resource
 from flask import request
 from http import HTTPStatus
 from flask_jwt_extended import get_jwt_identity, jwt_required
-from api.utils.dbUtils import getUserFromId, createListing, getAllByUserRef, createNotif, getListingFromId, getRecommendedListings
-from api.ml import skill_get
+from utils.dbUtils import getUserFromId, createListing, getAllByUserRef, createNotif, getListingFromId, getRecommendedListings
+from ml import skill_get
 
 class ListingResource(Resource):
 

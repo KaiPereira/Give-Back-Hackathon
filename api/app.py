@@ -1,15 +1,17 @@
+from flask_cors import CORS
 from flask import Flask
 from flask_restful import Api
 from extensions import jwt
 import firebase_admin
 from config import Config
-from api.resources.auth import LoginResource, LogoutResource, RefreshResource, jwt_blacklist
-from api.resources.user import UserCreationResource, UserViewResource
-from api.resources.listing import ListingResource, MyListingResource, RequestListingResource, ListingViewResource, ListingDiscoverResource
-from api.resources.notifications import NotificationResource, ReadNotificationResource
-from api.resources.dummy import TestEndpoint, ProtectedTestEndpoint
+from resources.auth import LoginResource, LogoutResource, RefreshResource, jwt_blacklist
+from resources.user import UserCreationResource, UserViewResource
+from resources.listing import ListingResource, MyListingResource, RequestListingResource, ListingViewResource, ListingDiscoverResource
+from resources.notifications import NotificationResource, ReadNotificationResource
+from resources.dummy import TestEndpoint, ProtectedTestEndpoint
 
 def register_extensions(app):
+    CORS(app)
     jwt.init_app(app)
 
     @jwt.token_in_blocklist_loader

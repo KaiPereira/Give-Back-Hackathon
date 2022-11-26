@@ -1,4 +1,4 @@
-from api.extensions import skillExtractor
+from extensions import skillExtractor
 
 def skill_get(desc):
     skill_ls = []

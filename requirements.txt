@@ -6,3 +6,4 @@ flask-jwt-extended == 4.4.4
 spacy
 skillNER
 IPython
+passlib

@@ -1,7 +1,7 @@
 import uuid
-from api.extensions import db
+from extensions import db
 from firebase_admin import firestore
-from api.utils.preprocessUtils import preprocessListing, preprocessUser
+from utils.preprocessUtils import preprocessListing, preprocessUser
 
 def createUser(dbData):
     id = str(uuid.uuid4())

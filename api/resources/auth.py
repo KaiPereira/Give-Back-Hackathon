@@ -1,8 +1,8 @@
 from flask_restful import Resource
 from http import HTTPStatus
 from flask import request
-from api.utils.dbUtils import getUserFromUsername
-from api.utils.authUtils import verifyPassword
+from utils.dbUtils import getUserFromUsername
+from utils.authUtils import verifyPassword
 from flask_jwt_extended import (get_jwt_identity,
                                 jwt_required,
                                 get_jwt,
