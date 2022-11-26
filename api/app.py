@@ -5,7 +5,7 @@ import firebase_admin
 from config import Config
 from api.resources.auth import LoginResource, LogoutResource, RefreshResource, jwt_blacklist
 from api.resources.user import UserCreationResource, UserViewResource
-from api.resources.listing import ListingResource, MyListingResource, RequestListingResource
+from api.resources.listing import ListingResource, MyListingResource, RequestListingResource, ListingViewResource, ListingDiscoverResource
 from api.resources.notifications import NotificationResource, ReadNotificationResource
 from api.resources.dummy import TestEndpoint, ProtectedTestEndpoint
 
@@ -39,7 +39,8 @@ def register_resources(app):
     api.add_resource(NotificationResource, "/api/notifs/me")
     api.add_resource(ReadNotificationResource, "/api/notifs/read/<notifId>")
     api.add_resource(RequestListingResource, "/api/listings/<listingId>/request")
-
+    api.add_resource(ListingViewResource, "/api/listings/<listingId>")
+    api.add_resource(ListingDiscoverResource, "/api/listings/discover")
     api.add_resource(TestEndpoint, "/api/testEndpoint")
     api.add_resource(ProtectedTestEndpoint, "/api/protectedTestEndpoint")
 

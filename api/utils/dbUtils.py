@@ -1,6 +1,7 @@
 import uuid
 from api.extensions import db
 from firebase_admin import firestore
+from api.utils.preprocessUtils import preprocessListing, preprocessUser
 
 def createUser(dbData):
     id = str(uuid.uuid4())
@@ -38,12 +39,10 @@ def getAllByUserRef(userRef):
         return None, None
     dictDocs = [i.to_dict() for i in docs]
     for i in dictDocs:
-        i["author"] = i["author"].get().to_dict()
-        i["author"].pop("password")
+        i["author"] = preprocessUser(i["author"].get().to_dict())
     return dictDocs, docs
 
 def addNotifToUser(userId, notifRef):
-    print(userId)
     doc = db.collection("users").document(userId)
     doc.update({
         "notifs": firestore.ArrayUnion([notifRef])
@@ -72,3 +71,20 @@ def updateDB(userId, dbData):
     doc = db.collection("users").document(userId)
     doc.update(dbData)
     return True
+
+def getRecommendedListings(user):
+
+    skills = user["skills"]
+    location = user["location"]
+
+    query = db.collection("listings").where(
+        "skills", "array_contains_any", skills
+    ).where("location", "==", location).stream()
+
+    if not list(query):
+        query = db.collection("listings").where(
+            "skills", "array_contains_any", skills
+        ).stream()
+        if not list(query):
+            query = db.collection("listings").stream()
+    return [preprocessListing(i) for i in list(query)]

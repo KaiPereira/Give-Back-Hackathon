@@ -1,11 +1,4 @@
 
-
-User Creation/Auth Services:
-PATCH /api/users > Requires JWT Access Token (edit user info)
-GET /api/users/<userId> > View a user's profile
-
 Listing Services:
 GET /api/listings/<listingId> > View listing.
 GET /api/listings/discover > Requires JWT Access Token (only students). View all recommended listings.
-
-Notification Services:

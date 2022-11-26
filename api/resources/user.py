@@ -2,7 +2,7 @@ from flask_restful import Resource
 from http import HTTPStatus
 from flask import request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from api.utils.dbUtils import createUser, getUserFromId, updateDB
+from api.utils.dbUtils import createUser, getUserFromId, updateDB, getAllByUserRef
 from api.utils.authUtils import hashPassword
 
 class UserCreationResource(Resource):
@@ -65,6 +65,6 @@ class UserViewResource(Resource):
 
         if user["isBusiness"]:
             user.pop("skills")
-
+            user["listings"] = getAllByUserRef(userRef)[0] or []
         return user, HTTPStatus.OK
 
