@@ -6,10 +6,13 @@ def preprocessListing(listing):
     return listing
 
 def preprocessUser(user):
-    user.pop("notifs")
-    user.pop("password")
+    try:
+        user.pop("notifs")
+        user.pop("password")
 
-    if user["isBusiness"]:
-        user.pop("skills")
+        if user["isBusiness"]:
+            user.pop("skills")
+    except AttributeError:
+        pass
 
     return user
