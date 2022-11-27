@@ -7,7 +7,7 @@ def createUser(dbData):
     id = str(uuid.uuid4())
     userRef = db.collection("users").document(id)
     userRef.set(dbData)
-    return userRef.get().to_dict()
+    return userRef.get().to_dict(), userRef
 
 def getUserFromUsername(username):
     doc = db.collection("users").where("username", "==", username).get()
@@ -77,14 +77,16 @@ def getRecommendedListings(user):
     skills = user["skills"]
     location = user["location"]
 
-    query = db.collection("listings").where(
+    query = list(db.collection("listings").where(
         "skills", "array_contains_any", skills
-    ).where("location", "==", location).stream()
+    ).where("location", "==", location).stream())
 
-    if not list(query):
-        query = db.collection("listings").where(
+    if not query:
+        query = list(db.collection("listings").where(
             "skills", "array_contains_any", skills
-        ).stream()
-        if not list(query):
-            query = db.collection("listings").stream()
-    return [preprocessListing(i) for i in list(query)]
+        ).stream())
+
+        if not query:
+            query = list(db.collection("listings").stream())
+
+    return [preprocessListing(i) for i in query]

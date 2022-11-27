@@ -25,12 +25,15 @@ class UserCreationResource(Resource):
 
         except KeyError:
             return {"msg": "All or none of the fields are not provided."}, HTTPStatus.BAD_REQUEST
-        user = createUser(dbData)
+        user, userObj = createUser(dbData)
         user.pop("password")
         user.pop("location")
         user.pop("notifs")
 
-        return user, HTTPStatus.CREATED
+        accessToken = create_access_token(identity=userObj.id)
+        refreshToken = create_refresh_token(identity=userObj.id)
+
+        return {"userInfo": user,"accessToken": accessToken, "refreshToken": refreshToken, "userId": userObj.id}, HTTPStatus.OK
 
     @jwt_required()
     def put(self):

@@ -1,12 +1,24 @@
 import NavBar from "../components/navbar"
 import Listing from "../components/Listing"
+import React from "react"
+import axios from "axios"
 
 export default function Discover() {
+    const [listings, changeListings] = React.useState()
+    
+    React.useEffect(() => {
+        axios.get("http://localhost:5000/api/listings/discover", {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${localStorage.getItem("key")}`,
+            }
+        })
+    })
   return (
     <>
-        <NavBar />
+        {/* <NavBar /> */}
         <div className="discover-page">
-            {/* <div className="discover-sections-p">
+            <div className="discover-sections-p">
                 <div className='discover-sections'>
                     <div className='discover-section'>
                         Discover
@@ -30,7 +42,7 @@ export default function Discover() {
                         Online
                     </div>
                 </div>
-            </div> */}
+            </div>
             <div className="listings">
                 <Listing 
                     title="E-Commerce Website"

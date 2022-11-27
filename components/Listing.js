@@ -14,8 +14,8 @@ export default function Listing(props) {
         }))
 
         axios.get("http://localhost:5000/api/users/21e1be72-44d4-4331-bdfa-d8be12c40eda")
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
+            // .then(res => console.log(res.data))
+            // .catch(err => console.log(err))
 
     }, [])
 

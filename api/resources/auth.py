@@ -3,11 +3,8 @@ from http import HTTPStatus
 from flask import request
 from utils.dbUtils import getUserFromUsername
 from utils.authUtils import verifyPassword
-from flask_jwt_extended import (get_jwt_identity,
-                                jwt_required,
-                                get_jwt,
-                                create_access_token,
-                                create_refresh_token)
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, create_refresh_token
+
 jwt_blacklist = set()
 
 
@@ -30,7 +27,7 @@ class LoginResource(Resource):
         if verified:
             accessToken = create_access_token(identity=userObj.id)
             refreshToken = create_refresh_token(identity=userObj.id)
-            return {"accessToken": accessToken, "refreshToken": refreshToken}, HTTPStatus.OK
+            return {"accessToken": accessToken, "refreshToken": refreshToken, "userId": userObj.id}, HTTPStatus.OK
         else:
             return {"msg":"Username or password is incorrect"}, HTTPStatus.UNAUTHORIZED
 
