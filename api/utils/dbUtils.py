@@ -101,3 +101,4 @@ def getRecommendedListings(user):
             query = list(db.collection("listings").stream())
 
     return [preprocessListing(i) for i in query]
+    

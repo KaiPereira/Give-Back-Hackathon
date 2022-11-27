@@ -24,6 +24,7 @@ export default function Discover() {
                     })
                     .then(res => {
                         changeListings(res.data.map((listing, index) => {
+                            console.log(listing)
                             return (
                                 <Listing 
                                     key={index}
@@ -37,13 +38,15 @@ export default function Discover() {
                             )
                         }))
                     })
+                    .catch(err => console.log(err))
                 } else if (res.data.isBusiness) {
                     axios.get("http://localhost:5000/api/users/all")
                         .then(res => {
-                            axios.get("http://localhost:5000/api/users/4a409927-4ea0-4225-9ef6-11d6f102dd08")
+                            axios.get(`http://localhost:5000/api/users/${localStorage.getItem("uid")}`)
                                 .then(res2 => {
                                     changeUserListings(
                                         res.data.map((user, index) => {
+                                            console.log (res2.data.username, user.username)
                                             if (res2.data.username !== user.username)
                                             return (
                                                 <UserListing 
