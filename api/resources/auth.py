@@ -3,7 +3,7 @@ from http import HTTPStatus
 from flask import request
 from utils.dbUtils import getUserFromUsername
 from utils.authUtils import verifyPassword
-from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, create_refresh_token
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, create_refresh_token, get_jwt
 
 jwt_blacklist = set()
 

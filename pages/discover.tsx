@@ -13,10 +13,27 @@ export default function Discover() {
                 "Authorization": `Bearer ${localStorage.getItem("key")}`,
             }
         })
-    })
+        .then(res => {
+            changeListings(res.data.map((listing, index) => {
+                console.log(listing)
+                return (
+                    <Listing 
+                        key={index}
+                        title={listing.title}
+                        description={listing.desc}
+                        author={listing.author.username}
+                        location={`${listing.author.location.city}, ${listing.author.location.province}, ${listing.author.location.country}`}
+                        skills={listing.skills}
+                        id={listing.id}
+                    />
+                )
+            }))
+        })
+    }, [])
+
   return (
     <>
-        {/* <NavBar /> */}
+        <NavBar />
         <div className="discover-page">
             <div className="discover-sections-p">
                 <div className='discover-sections'>
@@ -44,13 +61,7 @@ export default function Discover() {
                 </div>
             </div>
             <div className="listings">
-                <Listing 
-                    title="E-Commerce Website"
-                    skills={["React", "Next.js", "TailwindCSS", "Firebase"]}
-                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio est, porttitor sit amet urna sit amet, malesuada dictum felis. Sed arcu leo, tristique sit amet interdum sit amet, auctor vel mi."
-                    location="Remote"
-                    author="Tesla Co."
-                />
+                {listings}
             </div>
         </div>
     </>

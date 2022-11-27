@@ -7,8 +7,10 @@ const NavBar = () => {
 
     React.useEffect(() => {
         axios.get(`http://localhost:5000/api/users/${localStorage.getItem("uid")}`)
-            .then(res => changeUser(res.data))
-            .catch(err => console.log(err))
+            .then(res => {
+                changeUser(res.data)
+            })
+            .catch(err => changeUser(false))
     }, [])
 
     return (

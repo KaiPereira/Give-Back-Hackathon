@@ -42,27 +42,30 @@ export default function Signup() {
             },
             isBusiness: radioValue ? true : false,
             isStudent: radioValue ? false : true,
-        });
-
-        var config = {
+          });
+          
+          var config = {
             method: 'post',
             url: 'http://localhost:5000/api/users',
             headers: { 
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2OTQ5NjA5NCwianRpIjoiOGUxNGE3MTQtMTJlZi00NWYyLTg1MjctZTgyZWE3YTRjMzQ3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImU3Yjc4MzhlLWM1NDUtNDg0NC1iOWZjLTBmYzA4MGJlYTE3NiIsIm5iZiI6MTY2OTQ5NjA5NCwiZXhwIjoxNjY5NDk2OTk0fQ.RK_D_fXXvqldUQA4O_n_MmP5vBVkPaRtYsAccBs-0NA', 
-                'Content-Type': 'application/json'
+              'Content-Type': 'application/json'
             },
             data : data
-        };
-
-        axios(config)
+          };
+          
+          axios(config)
             .then(function (response) {
-                console.log(response.data);
+                localStorage.setItem("key", response.data.accessToken)
+                localStorage.setItem("uid", response.data.userId)
+                localStorage.setItem("uid", response.data.refreshToken)
+                window.location.href = "/discover"
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
     
+    console.log(radioValue, userDetails)
     return (
         <>
             <NavBar />

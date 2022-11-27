@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from http import HTTPStatus
 from flask import request
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity
 from utils.dbUtils import createUser, getUserFromId, updateDB, getAllByUserRef
 from utils.authUtils import hashPassword
 
@@ -25,15 +25,15 @@ class UserCreationResource(Resource):
 
         except KeyError:
             return {"msg": "All or none of the fields are not provided."}, HTTPStatus.BAD_REQUEST
-        user, userObj = createUser(dbData)
+        user, id = createUser(dbData)
         user.pop("password")
         user.pop("location")
         user.pop("notifs")
 
-        accessToken = create_access_token(identity=userObj.id)
-        refreshToken = create_refresh_token(identity=userObj.id)
+        accessToken = create_access_token(identity=id)
+        refreshToken = create_refresh_token(identity=id)
 
-        return {"userInfo": user,"accessToken": accessToken, "refreshToken": refreshToken, "userId": userObj.id}, HTTPStatus.OK
+        return {"userInfo": user,"accessToken": accessToken, "refreshToken": refreshToken, "userId": id}, HTTPStatus.OK
 
     @jwt_required()
     def put(self):
@@ -58,6 +58,10 @@ class UserCreationResource(Resource):
 class UserViewResource(Resource):
     def get(self, id):
         user, userRef = getUserFromId(id)
+
+        if not user:
+            return {"msg": "User not found"}, HTTPStatus.NOT_FOUND
+
         user.pop("password")
         user.pop("notifs")
 
