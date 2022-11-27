@@ -2,7 +2,7 @@ from flask_restful import Resource
 from http import HTTPStatus
 from flask import request
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity
-from utils.dbUtils import createUser, getUserFromId, updateDB, getAllByUserRef
+from utils.dbUtils import createUser, getUserFromId, updateDB, getAllByUserRef, getAllUsers
 from utils.authUtils import hashPassword
 
 class UserCreationResource(Resource):
@@ -40,6 +40,8 @@ class UserCreationResource(Resource):
         try:
             data = request.get_json()
             dbData = {
+                # Kai added "username": data["username"],
+                "username": data["username"],
                 "skills": data["skills"],
                 "bio": data["bio"],
                 "location": data["location"],
@@ -69,4 +71,11 @@ class UserViewResource(Resource):
             user.pop("skills")
             user["listings"] = getAllByUserRef(userRef)[0] or []
         return user, HTTPStatus.OK
+
+
+# Create a route that gets all the users
+class UserListResource(Resource):
+    def get(self):
+        users = getAllUsers()
+        return users, HTTPStatus.OK
 

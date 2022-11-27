@@ -19,7 +19,15 @@ def getUserFromId(id):
     doc = db.collection("users").document(id)
     if not doc:
         return None, None
+    print(doc.get().to_dict())
     return doc.get().to_dict(), doc
+
+def getAllUsers():
+    docs = db.collection("users")
+    if not docs:
+        return None, None
+    all_users = [doc.to_dict() for doc in docs.get()]
+    return all_users
 
 def createListing(dbData):
     id = str(uuid.uuid4())

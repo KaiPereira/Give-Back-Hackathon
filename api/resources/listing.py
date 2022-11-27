@@ -24,7 +24,7 @@ class ListingResource(Resource):
         skills = skill_get(desc)
 
         location = {
-            "town": user["location"]["town"],
+            "city": user["location"]["city"],
             "province": user["location"]["province"],
             "country": user["location"]["country"]
         }
