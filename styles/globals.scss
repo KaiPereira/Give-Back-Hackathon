@@ -511,9 +511,66 @@ $white: #F4FFFB;
 	}
 }
 .listingDetails {
+	padding: 120px 170px;
+
 	h1 {
 		font-weight: 700;
 		font-size: 35px;
 		color: $blank;
+	}
+
+}
+.listingSkills {
+	display: flex;
+	gap: 13px;
+	flex-wrap: wrap;
+	margin-top: 25px;
+}
+.specific-listing-skill {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 8px 34px;
+	background: $main;
+	border-radius: 1000px;
+	font-weight: 500;
+	font-size: 16px;
+	color: $white;
+}
+.listingDetailDescription {
+	margin-top: 37px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	color: $medium-gray;
+
+	span {
+		font-weight: 600;
+	}
+}
+.listingContactButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	width: 225px;
+	height: 55px;
+	border-radius: 10px;
+	background: $main;
+	border: none;
+	outline: none;
+	font-weight: 700;
+	font-size: 18px;
+	color: $white;
+	margin-top: 75px;
+	border: 2px solid $main;
+	transition: background 0.5s, stroke 0.5s;
+	cursor: pointer;
+	stroke: $white;
+
+	&:hover {
+		background: none;
+		color: $main;
+		stroke: $main;
 	}
 }
