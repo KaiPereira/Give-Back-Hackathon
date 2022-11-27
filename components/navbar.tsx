@@ -13,6 +13,20 @@ const NavBar = () => {
             .catch(err => changeUser(false))
     }, [])
 
+    function logout() {
+        axios.get("http://localhost:5000/api/users/logout", {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("key")}`
+            }
+        })
+        .then(res => {
+            localStorage.removeItem("key")
+            localStorage.removeItem("uid")
+            localStorage.removeItem("refresh")
+            window.location.reload()
+        })
+    }
+
     return (
         <div className='top-navbar-align'>
             <div className='top-navbar'>
@@ -34,12 +48,31 @@ const NavBar = () => {
                     <input placeholder="Search Listing" className="fontAwesome navSearch" />
                 </div>
                 { user ?
-                <Link href={`/users/${typeof window !== "undefined" ? localStorage.getItem("uid") : ""}`}>
                     <div className="navAccount">
                         {user.username && <img src="/AccountDummy.png" alt="Account" className="navIcon" />}
                         <p>{user.username}</p>
+                        { user.username &&
+                        <div className="navAccountDropdown">
+                            <div className="navAccountDropdownParent">
+                                <Link href={`/users/${typeof window !== "undefined" ? localStorage.getItem("uid") : ""}`}>
+                                    <div className="navAccountDropdownChild">
+                                        <p>Account</p>
+                                    </div>
+                                </Link>
+                                { user.isBusiness &&
+                                <Link href="/create-listing">
+                                    <div className="navAccountDropdownChild">
+                                        <p>Create-listing</p>
+                                    </div>
+                                </Link>
+                                }
+                                <div className="navAccountDropdownChild" onClick={logout}>
+                                    <p>Log Out</p>
+                                </div>
+                            </div>
+                        </div>
+                        }
                     </div>
-                </Link>
                 :
                 <Link href="/">
                     <button className="navSignInButton">Sign In</button>

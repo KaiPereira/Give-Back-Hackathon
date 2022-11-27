@@ -120,6 +120,7 @@ $white: #F4FFFB;
 	padding-left: 10px;
 }
 .navAccount {
+	position: relative;
 	display: flex;
 	gap: 20px;
 	align-items: center;
@@ -132,6 +133,51 @@ $white: #F4FFFB;
 		font-weight: 600;
 		font-size: 18px;
 		color: $blank;
+	}
+
+	&:hover > .navAccountDropdown {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+.navAccountDropdown {
+	position: absolute;
+	top: 40px;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.5s, visibility 0.5s;
+}
+.navAccountDropdownParent {
+	margin-top: 10px;
+	width: 200px;
+	background: $light-gray;
+	border-radius: 15px;
+	overflow: hidden;
+}
+.navAccountDropdownChild {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	transition: background 0.3s;
+	cursor: pointer;
+	
+	&:hover {
+		background: $main;
+		
+		p {
+			color: $white;
+		}
+	}
+
+	p {
+		font-size: 14px;
+		margin-left: 20px;
+		color: $blank;
+		transition: color 0.3s;
+	}
+	
+	&:not(:nth-last-child(1)) {
+		border-bottom: 1px solid rgb(180, 180, 180);
 	}
 }
 .fontAwesome { font-family: 'Helvetica', FontAwesome, sans-serif; }
@@ -171,8 +217,9 @@ $white: #F4FFFB;
 }
 
 .listings {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 .listing {
@@ -572,5 +619,105 @@ $white: #F4FFFB;
 		background: none;
 		color: $main;
 		stroke: $main;
+	}
+}
+.userContainer {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	margin-top: 115px;
+	margin-bottom: 100px;
+}
+.userProfile {
+	position: relative;
+	width: 133px;
+	height: 133px;
+	object-fit: cover;
+}
+.userDetailInput {
+	margin-top: 34px;
+}
+.signinInputTextarea {
+	resize: vertical;
+	padding-left: 17px;
+	padding-top: 14px;
+	min-height: 200px;
+	max-height: 400px;
+}
+.userContainerOverlay {
+	position: relative;
+	background: $white;
+	border-radius: 1000px;
+	cursor: pointer;
+	transition: background 0.5s;
+
+	.userProfile {
+		transition: opacity 0.5s;
+		border-radius: 1000px;
+	}
+
+	&:hover {
+		background: $main;
+		.userProfile {
+			opacity: 0;
+		}
+	}
+}
+.userContainerOverlayText {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: $white;
+	font-weight: 500;
+}
+.listing-image {
+	width: 68px;
+	height: 68px;
+	border-radius: 1000px;
+}
+.userListing {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+.userListingHeader {
+	margin-top: 10px;
+}
+.listing-tag-user {
+	justify-content: space-around;
+	margin-top: 15px;
+	margin-bottom: 0px !important;
+}
+.userListingHeader {
+	font-weight: 600;
+	font-size: 20px;
+	color: $blank;
+}
+.userListingDescription {
+	margin-top: 20px;
+	text-align: center;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 18px;
+	color: $medium-gray;
+
+	span {
+		font-weight: 600;
+	}
+}
+.listing::after {
+	content: "Contact Now"
+}
+.createListingMain {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	margin-top: 115px;
+
+	h1 {
+		font-weight: 600;
+		font-size: 35px;
+		color: $blank;
 	}
 }

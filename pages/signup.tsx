@@ -57,7 +57,7 @@ export default function Signup() {
             .then(function (response) {
                 localStorage.setItem("key", response.data.accessToken)
                 localStorage.setItem("uid", response.data.userId)
-                localStorage.setItem("uid", response.data.refreshToken)
+                localStorage.setItem("resfresh", response.data.refreshToken)
                 window.location.href = "/discover"
             })
             .catch(function (error) {
@@ -65,7 +65,6 @@ export default function Signup() {
             });
     }
     
-    console.log(radioValue, userDetails)
     return (
         <>
             <NavBar />

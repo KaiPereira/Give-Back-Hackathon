@@ -55,7 +55,7 @@ export default function Listing({ data }) {
                     </div>
                 </section>
                 <section className="listingDetails">
-                    <h1>E-Commerce Website</h1>
+                    <h1>{data.title}</h1>
                     <div className="listingSkills">
                         {skills}
                     </div>
